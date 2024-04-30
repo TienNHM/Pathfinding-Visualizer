@@ -360,7 +360,7 @@ class Maze:
 
         self.animator.add_nodes_to_animate(nodes_to_animate)
 
-    def solve(self, algo_name: str,) -> Solution:
+    def solve(self, algo_name: str, beam_width: int = 10) -> Solution:
         """Solve the maze with an algorithm
 
         Args:
@@ -383,6 +383,7 @@ class Maze:
         solution = PathFinder.find_path(
             grid=grid,
             search=mapper[algo_name.strip()],
+            beam_width=beam_width,
         )
 
         return solution

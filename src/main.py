@@ -49,7 +49,9 @@ top = pygame.Rect(0, 0, WIDTH, 80)
 
 # Title
 title = Label(
-    "Pathfinding Visualiser", 20, 0,
+    # "Pathfinding Visualiser", 
+    "",
+    20, 0,
     background_color=pygame.Color(*DARK_BLUE),
     foreground_color=pygame.Color(*WHITE),
     padding=6, font_size=20, bold=True,
@@ -85,31 +87,40 @@ algo_menu = Menu(
     children=[
         Button(
             surface=WINDOW,
-            text="A* Search",
+            text="Local Beam Search",
             x=algorithm_btn.rect.x - 40,
-            y=0,
+            y=algorithm_btn.rect.y + algorithm_btn.height * 5,
             background_color=pygame.Color(*DARK_BLUE),
             foreground_color=pygame.Color(*WHITE),
             font_size=20, outline=False
         ),
-        Button(
-            surface=WINDOW,
-            text="Dijkstra's Search",
-            x=algorithm_btn.rect.x - 40,
-            y=algorithm_btn.rect.y + algorithm_btn.height * 2,
-            background_color=pygame.Color(*DARK_BLUE),
-            foreground_color=pygame.Color(*WHITE),
-            font_size=20, outline=False
-        ),
-        Button(
-            surface=WINDOW,
-            text="Greedy Best First Search",
-            x=algorithm_btn.rect.x - 40,
-            y=algorithm_btn.rect.y + algorithm_btn.height * 3,
-            background_color=pygame.Color(*DARK_BLUE),
-            foreground_color=pygame.Color(*WHITE),
-            font_size=20, outline=False
-        ),
+        # Button(
+        #     surface=WINDOW,
+        #     text="A* Search",
+        #     x=algorithm_btn.rect.x - 40,
+        #     y=0,
+        #     background_color=pygame.Color(*DARK_BLUE),
+        #     foreground_color=pygame.Color(*WHITE),
+        #     font_size=20, outline=False
+        # ),
+        # Button(
+        #     surface=WINDOW,
+        #     text="Dijkstra's Search",
+        #     x=algorithm_btn.rect.x - 40,
+        #     y=algorithm_btn.rect.y + algorithm_btn.height * 2,
+        #     background_color=pygame.Color(*DARK_BLUE),
+        #     foreground_color=pygame.Color(*WHITE),
+        #     font_size=20, outline=False
+        # ),
+        # Button(
+        #     surface=WINDOW,
+        #     text="Greedy Best First Search",
+        #     x=algorithm_btn.rect.x - 40,
+        #     y=algorithm_btn.rect.y + algorithm_btn.height * 3,
+        #     background_color=pygame.Color(*DARK_BLUE),
+        #     foreground_color=pygame.Color(*WHITE),
+        #     font_size=20, outline=False
+        # ),
         Button(
             surface=WINDOW,
             text="Breadth First Search",
@@ -119,24 +130,15 @@ algo_menu = Menu(
             foreground_color=pygame.Color(*WHITE),
             font_size=20, outline=False
         ),
-        Button(
-            surface=WINDOW,
-            text="Depth First Search",
-            x=algorithm_btn.rect.x - 40,
-            y=algorithm_btn.rect.y + algorithm_btn.height * 4,
-            background_color=pygame.Color(*DARK_BLUE),
-            foreground_color=pygame.Color(*WHITE),
-            font_size=20, outline=False
-        ),
-        Button(
-            surface=WINDOW,
-            text="Local Beam Search",
-            x=algorithm_btn.rect.x - 40,
-            y=algorithm_btn.rect.y + algorithm_btn.height * 5,
-            background_color=pygame.Color(*DARK_BLUE),
-            foreground_color=pygame.Color(*WHITE),
-            font_size=20, outline=False
-        ),
+        # Button(
+        #     surface=WINDOW,
+        #     text="Depth First Search",
+        #     x=algorithm_btn.rect.x - 40,
+        #     y=algorithm_btn.rect.y + algorithm_btn.height * 4,
+        #     background_color=pygame.Color(*DARK_BLUE),
+        #     foreground_color=pygame.Color(*WHITE),
+        #     font_size=20, outline=False
+        # ),
     ]
 )
 
@@ -178,6 +180,70 @@ speed_menu = Menu(
         Button(
             surface=WINDOW,
             text="Slow",
+            x=0,
+            y=0,
+            background_color=pygame.Color(*DARK_BLUE),
+            foreground_color=pygame.Color(*WHITE),
+            font_size=20, outline=False
+        ),
+    ]
+)
+
+beam_width_btn = Button(
+    surface=WINDOW,
+    text="Beam Width",
+    x=speed_btn.rect.right + 40,
+    y=0,
+    background_color=pygame.Color(*DARK_BLUE),
+    foreground_color=pygame.Color(*WHITE),
+    font_size=20, outline=False
+)
+beam_width_btn.rect.centery = top.centery
+beam_width_btn.rect.y -= 15
+
+beam_width_menu = Menu(
+    surface=WINDOW,
+    button=beam_width_btn,
+    children=[
+        Button(
+            surface=WINDOW,
+            text="3",
+            x=0,
+            y=0,
+            background_color=pygame.Color(*DARK_BLUE),
+            foreground_color=pygame.Color(*WHITE),
+            font_size=20, outline=False
+        ),
+        Button(
+            surface=WINDOW,
+            text="5",
+            x=0,
+            y=0,
+            background_color=pygame.Color(*DARK_BLUE),
+            foreground_color=pygame.Color(*WHITE),
+            font_size=20, outline=False
+        ),
+        Button(
+            surface=WINDOW,
+            text="10",
+            x=0,
+            y=0,
+            background_color=pygame.Color(*DARK_BLUE),
+            foreground_color=pygame.Color(*WHITE),
+            font_size=20, outline=False
+        ),
+        Button(
+            surface=WINDOW,
+            text="50",
+            x=0,
+            y=0,
+            background_color=pygame.Color(*DARK_BLUE),
+            foreground_color=pygame.Color(*WHITE),
+            font_size=20, outline=False
+        ),
+        Button(
+            surface=WINDOW,
+            text="100",
             x=0,
             y=0,
             background_color=pygame.Color(*DARK_BLUE),
@@ -248,25 +314,25 @@ generate_menu = Menu(
     surface=WINDOW,
     button=generate_btn,
     children=[
-        Button(
-            surface=WINDOW,
-            text="Recursive Division",
-            x=generate_btn.rect.x - 40,
-            y=generate_btn.rect.y + generate_btn.height,
-            background_color=pygame.Color(*DARK_BLUE),
-            foreground_color=pygame.Color(*WHITE),
-            font_size=20, outline=False
-        ),
+        # Button(
+        #     surface=WINDOW,
+        #     text="Recursive Division",
+        #     x=generate_btn.rect.x - 40,
+        #     y=generate_btn.rect.y + generate_btn.height,
+        #     background_color=pygame.Color(*DARK_BLUE),
+        #     foreground_color=pygame.Color(*WHITE),
+        #     font_size=20, outline=False
+        # ),
 
-        Button(
-            surface=WINDOW,
-            text="Prim's Algorithm",
-            x=generate_btn.rect.x - 40,
-            y=generate_btn.rect.y + generate_btn.height,
-            background_color=pygame.Color(*DARK_BLUE),
-            foreground_color=pygame.Color(*WHITE),
-            font_size=20, outline=False
-        ),
+        # Button(
+        #     surface=WINDOW,
+        #     text="Prim's Algorithm",
+        #     x=generate_btn.rect.x - 40,
+        #     y=generate_btn.rect.y + generate_btn.height,
+        #     background_color=pygame.Color(*DARK_BLUE),
+        #     foreground_color=pygame.Color(*WHITE),
+        #     font_size=20, outline=False
+        # ),
         Button(
             surface=WINDOW,
             text="Randomised DFS",
@@ -276,15 +342,15 @@ generate_menu = Menu(
             foreground_color=pygame.Color(*WHITE),
             font_size=20, outline=False
         ),
-        Button(
-            surface=WINDOW,
-            text="Basic Random Maze",
-            x=generate_btn.rect.x - 40,
-            y=generate_btn.rect.y + generate_btn.height * 2,
-            background_color=pygame.Color(*DARK_BLUE),
-            foreground_color=pygame.Color(*WHITE),
-            font_size=20, outline=False
-        ),
+        # Button(
+        #     surface=WINDOW,
+        #     text="Basic Random Maze",
+        #     x=generate_btn.rect.x - 40,
+        #     y=generate_btn.rect.y + generate_btn.height * 2,
+        #     background_color=pygame.Color(*DARK_BLUE),
+        #     foreground_color=pygame.Color(*WHITE),
+        #     font_size=20, outline=False
+        # ),
         Button(
             surface=WINDOW,
             text="Basic Weight Maze",
@@ -331,6 +397,17 @@ def main() -> None:
         background_color=pygame.Color(*BLUE_2),
     )
     state.speed_label.rect.centerx = speed_btn.rect.centerx
+
+    state.beam_width_label = Label(
+        surface=WINDOW,
+        text="10",
+        font_size=16,
+        x=beam_width_btn.rect.x,
+        y=beam_width_btn.rect.bottom,
+        foreground_color=pygame.Color(*WHITE),
+        background_color=pygame.Color(*BLUE_2),
+    )
+    state.beam_width_label.rect.centerx = beam_width_btn.rect.centerx
 
     # Game loop
     mouse_is_down = False
@@ -484,8 +561,9 @@ def instant_algorithm(maze: Maze, algo_name: str):
         algo_name (str): Algorithm name
     """
     maze.clear_visited()
-
-    solution = maze.solve(algo_name=algo_name)
+    beam_width = int(state.beam_width_label.text)
+    print(f"Running {algo_name} with beam width {beam_width}")
+    solution = maze.solve(algo_name=algo_name, beam_width=beam_width)
 
     path = solution.path
     explored = solution.explored
@@ -576,6 +654,7 @@ def draw() -> None:
     # Draw algo label
     state.label.draw()
     state.speed_label.draw()
+    state.beam_width_label.draw()
 
     maze.draw()
 
@@ -615,6 +694,24 @@ def draw() -> None:
             )
             state.speed_label.rect.centerx = speed_btn.rect.centerx
             maze.set_speed(speed_menu.selected.text)
+            state.overlay = False
+
+    if (beam_width_menu.draw() or beam_width_menu.clicked) \
+            and not maze.animator.animating:
+        state.overlay = True
+
+        if beam_width_menu.selected:
+            state.beam_width_label = Label(
+                surface=WINDOW,
+                text=beam_width_menu.selected.text,
+                font_size=16,
+                x=beam_width_btn.rect.x,
+                y=beam_width_btn.rect.bottom,
+                foreground_color=pygame.Color(*WHITE),
+                background_color=pygame.Color(*BLUE_2),
+            )
+            state.beam_width_label.rect.centerx = beam_width_btn.rect.centerx
+            maze.set_speed(beam_width_menu.selected.text)
             state.overlay = False
 
     if visualise_btn.draw() \
@@ -703,13 +800,14 @@ def run_single(idx: int) -> None:
         idx (int): Algorithm index
     """
     maze.clear_visited()
-    text = algo_menu.children[idx].text
-    solution = maze.solve(text)
+    algo_name = algo_menu.children[idx].text
+    beam_width = int(state.beam_width_label.text)
+    solution = maze.solve(algo_name=algo_name, beam_width=beam_width)
 
     def callback():
         state.done_visualising = True
         state.label = Label(
-            f"{text} took {solution.explored_length} steps in "
+            f"{algo_name} took {solution.explored_length} steps in "
             f"{solution.time:.2f}ms", "center", 0,
             background_color=pygame.Color(*WHITE),
             foreground_color=pygame.Color(*DARK),
@@ -722,7 +820,7 @@ def run_single(idx: int) -> None:
     maze.visualize(solution=solution, after_animation=callback)
 
     state.label = Label(
-        f"Running {text}", "center", 0,
+        f"Running {algo_name}", "center", 0,
         background_color=pygame.Color(*WHITE),
         foreground_color=pygame.Color(*DARK),
         padding=6, font_size=20, outline=False,

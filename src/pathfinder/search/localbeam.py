@@ -16,6 +16,8 @@ class LocalBeamSearch:
         Returns:
             Solution: Solution found
         """
+        print(f"Local Beam Search: Beam Width = {beam_width}")
+        
         # Initialize the beam with a single node (source cell)
         initial_node = grid.get_node(pos=grid.start)
         beam = [initial_node]
