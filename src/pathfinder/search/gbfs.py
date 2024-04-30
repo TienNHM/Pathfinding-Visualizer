@@ -5,7 +5,7 @@ from ..models.solution import NoSolution, Solution
 
 class GreedyBestFirstSearch:
     @staticmethod
-    def search(grid: Grid) -> Solution:
+    def search(grid: Grid, beam_width: int = 10) -> Solution:
         """Find path between two points in a grid using A* Search
 
         Args:

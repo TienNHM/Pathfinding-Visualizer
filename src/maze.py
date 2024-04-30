@@ -373,6 +373,7 @@ class Maze:
             "Greedy Best First Search": Search.GREEDY_BEST_FIRST_SEARCH,
             "Breadth First Search": Search.BREADTH_FIRST_SEARCH,
             "Depth First Search": Search.DEPTH_FIRST_SEARCH,
+            "Local Beam Search": Search.LOCAL_BEAM_SEARCH,
         }
 
         # Instantiate Grid for PathFinder
