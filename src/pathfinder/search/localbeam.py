@@ -61,6 +61,7 @@ class LocalBeamSearch:
 
             # Return empty Solution object if beam is empty
             if not beam:
+                print("No solution found")
                 return NoSolution([], list(explored_states))
 
 # Example usage:

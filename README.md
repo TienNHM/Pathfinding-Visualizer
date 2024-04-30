@@ -62,6 +62,7 @@ The following pathfinding algorithms are currently supported in this visualizer:
 3. Greedy Best First Search: A heuristic search algorithm that prioritizes visiting nodes closest to the goal. Not guaranteed to find the shortest path, but often faster.
 4. A* Search: A heuristic search algorithm that combines the strengths of BFS and greedy best first search. Efficient for many types of graphs.
 5. Dijkstra's Search: A shortest path algorithm that uses a priority queue to prioritize visiting nodes with the smallest known cost. Guaranteed to find the shortest path in weighted graphs.
+6. Local Bean Search: A heuristic search algorithm that uses a priority queue to prioritize visiting nodes with the smallest known cost. Guaranteed to find the shortest path in weighted graphs.
 
 Each algorithm uses a different approach to finding the shortest path between two points on a graph. Choose the one that best fits your use case and watch it in action.
 
