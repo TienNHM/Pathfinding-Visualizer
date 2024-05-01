@@ -75,6 +75,8 @@ class Maze:
         self.maze[self.goal[0]][self.goal[1]].value = "B"
         self.maze[self.goal[0]][self.goal[1]].cost = 1
 
+        print(self.maze)
+
         # Generate screen coordinates for maze
         self.coords = self._generate_coordinates()
 
