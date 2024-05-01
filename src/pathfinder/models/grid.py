@@ -68,7 +68,11 @@ class Grid:
         # Determine possilbe actions
         possible_actions = {}
 
+        # TODO: choose best actions based on the value of the cell
+        #      and the distance to the goal
         for action, (r, c) in action_pos_mapper.items():
+            print('---------------------------')
+            print(action, (r, c), self.get_cost((r, c)))
             if not (0 <= r < self.height and 0 <= c < self.width):
                 continue
 
