@@ -180,7 +180,7 @@ beam_width_menu = Menu(
         ),
         Button(
             surface=WINDOW,
-            text="5",
+            text="3",
             x=0,
             y=0,
             background_color=pygame.Color(*DARK_BLUE),
@@ -189,7 +189,7 @@ beam_width_menu = Menu(
         ),
         Button(
             surface=WINDOW,
-            text="10",
+            text="5",
             x=0,
             y=0,
             background_color=pygame.Color(*DARK_BLUE),
@@ -716,7 +716,7 @@ def run_single(idx: int) -> None:
     def callback():
         state.done_visualising = True
         state.label = Label(
-            f"{algo_name} took {solution.explored_length} steps in "
+            f"{algo_name} cost {solution.path_cost} in "
             f"{solution.time:.2f}ms", "center", 0,
             background_color=pygame.Color(*WHITE),
             foreground_color=pygame.Color(*DARK),
