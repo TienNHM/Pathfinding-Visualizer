@@ -54,6 +54,7 @@ class LocalBeamSearch:
 
                 # Add current node position into the explored set
                 explored_states[node.state] = True
+            
 
             # Sort next_beam by some heuristic (e.g., path cost, distance to goal)
             next_beam.sort(key=lambda n: n.cost)

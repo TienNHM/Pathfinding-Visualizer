@@ -177,11 +177,12 @@ class MazeGenerator:
                 stack.append(curr)
 
                 x, y = self.maze.coords[next[0]][next[1]]
+                random_value = random.choice(["1", "2", "3", "4", "5", "6", "7", "8"])
                 nodes_to_animate.append(
                     AnimatingNode(
                         rect=pygame.Rect(0, 0, MIN_SIZE, MIN_SIZE),
                         center=(x + CELL_SIZE // 2, y + CELL_SIZE // 2),
-                        value="1",
+                        value=random_value,
                         ticks=pygame.time.get_ticks(),
                         color=BLUE_2
                     )
@@ -191,11 +192,12 @@ class MazeGenerator:
                 colIdx = (curr[1] + next[1]) // 2
                 x, y = self.maze.coords[rowIdx][colIdx]
 
+                random_value = random.choice(["1", "2", "3", "4", "5", "6", "7", "8"])
                 nodes_to_animate.append(
                     AnimatingNode(
                         rect=pygame.Rect(0, 0, MIN_SIZE, MIN_SIZE),
                         center=(x + CELL_SIZE // 2, y + CELL_SIZE // 2),
-                        value="1",
+                        value=random_value,
                         ticks=pygame.time.get_ticks(),
                         color=GREEN_2,
                     )

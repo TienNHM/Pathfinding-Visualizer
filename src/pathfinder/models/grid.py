@@ -36,7 +36,12 @@ class Grid:
         Returns:
             int: Weight
         """
-        return self.grid[pos[0]][pos[1]].cost
+        try:
+            return self.grid[pos[0]][pos[1]].cost
+        except IndexError:
+            print(f"IndexError: {pos}")
+            # return infinte cost
+            return 999999
 
     def get_neighbours(
         self,
