@@ -497,7 +497,7 @@ class Maze:
             )
 
         # Draw images if needed
-        if (n := self.maze[row][col]).cost > 1:
+        if (n := self.maze[row][col]).cost >= 1 and n.value != 'B' and n.value != 'A' and n.value != 'V' and n.value != '*':
             image_rect = WEIGHT.get_rect(
                 center=(x + CELL_SIZE // 2, y + CELL_SIZE // 2))
             self.surface.blit(WEIGHT, image_rect)
