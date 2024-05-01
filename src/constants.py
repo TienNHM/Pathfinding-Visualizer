@@ -26,7 +26,7 @@ HEIGHT = 900 if SCREEN_HEIGHT >= 900 else SCREEN_HEIGHT - 150
 HEADER_HEIGHT = 200
 
 # Maze
-CELL_SIZE = 26
+CELL_SIZE = 50
 if len(sys.argv) > 1:
     arg = sys.argv[1]
 
