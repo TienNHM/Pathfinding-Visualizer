@@ -72,3 +72,30 @@ FONT_18 = pygame.font.Font("assets/fonts/Montserrat-Regular.ttf", 18)
 # Animations
 MIN_SIZE = 0.3 * CELL_SIZE
 MAX_SIZE = 1.2 * CELL_SIZE
+
+
+# Beam Width List Constants
+BEAM_WIDTH_LIST = [1, 3, 5, 10, 999999]
+
+# Generate Maze List Constants
+GENERATE_MAZE_TYPE = [
+    # "Recursive Division",
+    # "Prim's Algorithm",
+    "Randomised DFS",
+    "Basic Random Maze",
+    # "Basic Weight Maze",
+]
+
+# List Cell Weights Constants
+CELL_WEIGHTS = [1, 2, 3, 4, 5, 6, 7, 8]
+CELL_WEIGHTS_AND_PATH = ("1", "2", "3", "4", "5", "6", "7", "8", "V", "*")
+
+# Search Algorithms Constants
+SEARCH_ALGORITHMS = [
+    "Local Beam Search",
+    "Breadth First Search",
+    # "Greedy Best First Search",
+    # "Depth First Search",
+    # "Dijkstra's Algorithm",
+    # "A* Algorithm",
+]

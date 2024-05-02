@@ -10,7 +10,7 @@ class Node:
         parent: Node | None = None,
         action: str | None = None
     ) -> None:
-        self.value = value
+        self.value = str(cost) if value == "" else value
         self.state = state
         self.cost = cost
         self.parent = parent

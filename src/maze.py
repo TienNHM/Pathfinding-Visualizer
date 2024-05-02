@@ -1,3 +1,4 @@
+import random
 from typing import Optional
 import pygame
 
@@ -11,6 +12,7 @@ from .pathfinder.models.grid import Grid
 from .pathfinder.models.search_types import Search
 
 from .constants import (
+    CELL_WEIGHTS,
     DARK_BLUE_2,
     GOAL,
     HEIGHT,
@@ -74,8 +76,6 @@ class Maze:
         self.maze[self.start[0]][self.start[1]].cost = 0
         self.maze[self.goal[0]][self.goal[1]].value = "B"
         self.maze[self.goal[0]][self.goal[1]].cost = 1
-
-        print(self.maze)
 
         # Generate screen coordinates for maze
         self.coords = self._generate_coordinates()
@@ -189,7 +189,7 @@ class Maze:
     def clear_board(self) -> None:
         """Clear maze walls
         """
-        self.maze = [[MazeNode("1", (rowIdx, colIdx), 1)
+        self.maze = [[MazeNode("", (rowIdx, colIdx), random.choice(CELL_WEIGHTS))
                       for colIdx in range(self.width)]
                      for rowIdx in range(self.height)]
 
@@ -362,7 +362,7 @@ class Maze:
 
         self.animator.add_nodes_to_animate(nodes_to_animate)
 
-    def solve(self, algo_name: str, beam_width: int = 10) -> Solution:
+    def solve(self, algo_name: str, beam_width: int = 3) -> Solution:
         """Solve the maze with an algorithm
 
         Args:
@@ -372,6 +372,7 @@ class Maze:
         mapper: dict[str, Search] = {
             "Breadth First Search": Search.BREADTH_FIRST_SEARCH,
             "Local Beam Search": Search.LOCAL_BEAM_SEARCH,
+            "Greedy Best First Search": Search.GREEDY_BEST_FIRST_SEARCH
         }
 
         # Instantiate Grid for PathFinder
@@ -497,7 +498,7 @@ class Maze:
             )
 
         # Draw images if needed
-        if (n := self.maze[row][col]).cost >= 1 and n.value != 'B' and n.value != 'A' and n.value != 'V' and n.value != '*':
+        if (n := self.maze[row][col]).cost >= 1 and n.value != 'B' and n.value != 'A':
             image_rect = WEIGHT.get_rect(
                 center=(x + CELL_SIZE // 2, y + CELL_SIZE // 2))
             self.surface.blit(WEIGHT, image_rect)

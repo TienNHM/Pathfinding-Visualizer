@@ -18,18 +18,22 @@ from .widgets import (
 )
 
 from .constants import (
+    BEAM_WIDTH_LIST,
     BLUE,
     CELL_SIZE,
+    CELL_WEIGHTS_AND_PATH,
     CLOCK,
     DARK,
     DARK_BLUE,
     FONT_18,
+    GENERATE_MAZE_TYPE,
     GRAY,
     GREEN,
     GREEN_2,
     HEADER_HEIGHT,
     BLUE_2,
     MIN_SIZE,
+    SEARCH_ALGORITHMS,
     WHITE,
     WIDTH,
     HEIGHT,
@@ -87,22 +91,13 @@ algo_menu = Menu(
     children=[
         Button(
             surface=WINDOW,
-            text="Local Beam Search",
+            text=search,
             x=algorithm_btn.rect.x - 40,
             y=algorithm_btn.rect.y + algorithm_btn.height * 5,
             background_color=pygame.Color(*DARK_BLUE),
             foreground_color=pygame.Color(*WHITE),
             font_size=20, outline=False
-        ),
-        Button(
-            surface=WINDOW,
-            text="Breadth First Search",
-            x=algorithm_btn.rect.x - 40,
-            y=algorithm_btn.rect.y + algorithm_btn.height * 3,
-            background_color=pygame.Color(*DARK_BLUE),
-            foreground_color=pygame.Color(*WHITE),
-            font_size=20, outline=False
-        ),
+        ) for search in SEARCH_ALGORITHMS
     ]
 )
 
@@ -171,31 +166,13 @@ beam_width_menu = Menu(
     children=[
         Button(
             surface=WINDOW,
-            text="1",
+            text=str(beam_width),
             x=0,
             y=0,
             background_color=pygame.Color(*DARK_BLUE),
             foreground_color=pygame.Color(*WHITE),
             font_size=20, outline=False
-        ),
-        Button(
-            surface=WINDOW,
-            text="3",
-            x=0,
-            y=0,
-            background_color=pygame.Color(*DARK_BLUE),
-            foreground_color=pygame.Color(*WHITE),
-            font_size=20, outline=False
-        ),
-        Button(
-            surface=WINDOW,
-            text="5",
-            x=0,
-            y=0,
-            background_color=pygame.Color(*DARK_BLUE),
-            foreground_color=pygame.Color(*WHITE),
-            font_size=20, outline=False
-        ),
+        ) for beam_width in BEAM_WIDTH_LIST
     ]
 )
 
@@ -260,15 +237,15 @@ generate_menu = Menu(
     surface=WINDOW,
     button=generate_btn,
     children=[
-        Button(
+         Button(
             surface=WINDOW,
-            text="Randomised DFS",
+            text=generate_type,
             x=generate_btn.rect.x - 40,
             y=generate_btn.rect.y + generate_btn.height,
             background_color=pygame.Color(*DARK_BLUE),
             foreground_color=pygame.Color(*WHITE),
             font_size=20, outline=False
-        ),
+        ) for generate_type in GENERATE_MAZE_TYPE
     ]
 )
 
@@ -288,7 +265,7 @@ clear_btn.rect.right = WIDTH - 20
 def main() -> None:
     """Start here"""
     state.label = Label(
-        "Choose an algorithm", "center", 0,
+        algo_menu.children[0].text, "center", 0,
         background_color=pygame.Color(*WHITE),
         foreground_color=pygame.Color(*DARK),
         padding=6, font_size=20, outline=False,
@@ -309,7 +286,7 @@ def main() -> None:
 
     state.beam_width_label = Label(
         surface=WINDOW,
-        text="10",
+        text="3",
         font_size=16,
         x=beam_width_btn.rect.x,
         y=beam_width_btn.rect.bottom,
@@ -390,7 +367,7 @@ def main() -> None:
                 row, col = maze.get_cell_pos(pos)
 
                 if cell_under_mouse != (row, col):
-                    if maze.get_cell_value((row, col)) in ("1", "V", "*"):
+                    if maze.get_cell_value((row, col)) in CELL_WEIGHTS_AND_PATH:
                         rect = pygame.Rect(0, 0, MIN_SIZE, MIN_SIZE)
                         x, y = maze.coords[row][col]
 
@@ -630,6 +607,7 @@ def draw() -> None:
 
         text = state.label.text.split(" took")[0]
         text = text.split("Running ")[-1]
+        text = text.split(" cost")[0]
         idx = [algo_menu.children.index(btn)
                for btn in algo_menu.children if btn.text == text][0]
         run_single(idx)
@@ -969,7 +947,7 @@ def show_results(results: list[tuple[str, dict[str, float]]]) -> None:
             Table(
                 x=0,
                 y=0,
-                rows=6,
+                rows=3,
                 columns=5,
                 padding=20,
                 color=DARK,

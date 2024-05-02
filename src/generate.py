@@ -3,7 +3,7 @@ from typing import Any, Callable
 import pygame
 
 from .animations import AnimatingNode, Animation, Animator
-from .constants import CELL_SIZE, DARK, GREEN_2, BLUE_2, MIN_SIZE, WHITE
+from .constants import CELL_SIZE, CELL_WEIGHTS, DARK, GREEN_2, BLUE_2, MIN_SIZE, WHITE
 
 
 GenerationCallback = Callable[[], None]
@@ -55,7 +55,7 @@ class MazeGenerator:
             return [neighbor for neighbor in neighbors
                     if self._is_valid_cell(neighbor)
                     and maze[neighbor[0]][neighbor[1]] == "#"]
-        elif value == "1":
+        elif value != "#":
             return [neighbor for neighbor in neighbors
                     if self._is_valid_cell(neighbor)
                     and maze[neighbor[0]][neighbor[1]] != "#"]
@@ -177,12 +177,11 @@ class MazeGenerator:
                 stack.append(curr)
 
                 x, y = self.maze.coords[next[0]][next[1]]
-                random_value = random.choice(["1", "2", "3", "4", "5", "6", "7", "8"])
                 nodes_to_animate.append(
                     AnimatingNode(
                         rect=pygame.Rect(0, 0, MIN_SIZE, MIN_SIZE),
                         center=(x + CELL_SIZE // 2, y + CELL_SIZE // 2),
-                        value=random_value,
+                        value=str(random.choice(CELL_WEIGHTS)),
                         ticks=pygame.time.get_ticks(),
                         color=BLUE_2
                     )
@@ -192,12 +191,11 @@ class MazeGenerator:
                 colIdx = (curr[1] + next[1]) // 2
                 x, y = self.maze.coords[rowIdx][colIdx]
 
-                random_value = random.choice(["1", "2", "3", "4", "5", "6", "7", "8"])
                 nodes_to_animate.append(
                     AnimatingNode(
                         rect=pygame.Rect(0, 0, MIN_SIZE, MIN_SIZE),
                         center=(x + CELL_SIZE // 2, y + CELL_SIZE // 2),
-                        value=random_value,
+                        value=str(random.choice(CELL_WEIGHTS)),
                         ticks=pygame.time.get_ticks(),
                         color=GREEN_2,
                     )
@@ -227,7 +225,7 @@ class MazeGenerator:
                         rect=pygame.Rect(0, 0, MIN_SIZE, MIN_SIZE),
                         center=(x + CELL_SIZE // 2, y + CELL_SIZE // 2),
                         ticks=pygame.time.get_ticks(),
-                        value="9",
+                        value=str(random.choice(CELL_WEIGHTS)),
                         color=WHITE,
                         animation=Animation.WEIGHT_ANIMATION
                     )

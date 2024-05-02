@@ -6,7 +6,7 @@ from typing import List
 
 class LocalBeamSearch:
     @staticmethod
-    def search(grid: Grid, beam_width: int = 10) -> Solution:
+    def search(grid: Grid, beam_width: int = 3) -> Solution:
         """Find path between two points in a grid using Local Beam Search
 
         Args:

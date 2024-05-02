@@ -21,7 +21,7 @@ class PathFinder:
     def find_path(
         grid: Grid,
         search: Search,
-        beam_width: int = 10,
+        beam_width: int = 3,
     ) -> Solution:
         start_time = time.perf_counter()
         solution = SEARCH[search](grid, beam_width)

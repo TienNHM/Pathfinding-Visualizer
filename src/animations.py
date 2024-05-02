@@ -77,7 +77,7 @@ class Animator:
         self,
         nodes: list[AnimatingNode],
         delay: int = 0,
-        gap: int = 10
+        gap: int = 3
     ) -> None:
         """Add nodes for animation
 
@@ -152,7 +152,7 @@ class Animator:
                 image_rect = GOAL.get_rect(center=node.center)
                 self.surface.blit(GOAL, image_rect)
 
-            elif (cost := self.maze.maze[row][col].cost) > 1:
+            elif (cost := self.maze.maze[row][col].cost) >= 1:
                 image_rect = WEIGHT.get_rect(center=node.center)
                 self.surface.blit(WEIGHT, image_rect)
 
