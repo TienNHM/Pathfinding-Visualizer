@@ -6,7 +6,7 @@ from enum import Enum
 import math
 import random
 
-from .constants import (
+from constants import (
     BLACK,
     DARK_BLUE,
     WHITE,
@@ -546,7 +546,7 @@ class AnimatingNode:
 class Animator:
 
     def __init__(self, surface: pygame.surface.Surface, maze) -> None:
-        from .maze import Maze
+        from maze import Maze
 
         self.surface = surface
         self.maze: Maze = maze
@@ -840,7 +840,7 @@ GenerationCallback = Callable[[], None]
 class MazeGenerator:
 
     def __init__(self, animator: Animator) -> None:
-        from .maze import Maze
+        from maze import Maze
 
         self.animator = animator
         self.maze: Maze = animator.maze

@@ -4,9 +4,7 @@ from typing import Callable
 from .search.bfs import BreadthFirstSearch
 from .search.localbeam import LocalBeamSearch
 from .models.grid import Grid
-from .models.solution import Solution
-from .models.search_types import Search
-from .models.search_types import Search
+from .models.solution import Solution, Search
 
 SearchFunction = Callable[[Grid, int], Solution]
 

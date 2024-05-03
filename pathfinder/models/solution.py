@@ -1,3 +1,5 @@
+from enum import Enum
+
 class Solution:
     """Model a solution to a pathfinding problem"""
 
@@ -27,3 +29,11 @@ class NoSolution(Solution):
         explored = list(self.explored)
         return (f"NoSolution([], {'{'}{explored[0]}, {explored[1]},"
                 f" ...{'}'}, {self.time})")
+
+
+class Search(Enum):
+    """Enum for search algorithms"""
+
+    BREADTH_FIRST_SEARCH = "BFS"
+    LOCAL_BEAM_SEARCH = "LBS"
+    GREEDY_BEST_FIRST_SEARCH = "GBFS"

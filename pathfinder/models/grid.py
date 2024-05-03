@@ -1,4 +1,4 @@
-from src.pathfinder.models.node import Node
+from .node import Node
 
 
 class Grid:

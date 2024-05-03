@@ -1,8 +1,8 @@
 import sys
 import pygame
-from .maze import GOAL, START, WEIGHT, Maze, State
+from maze import GOAL, START, WEIGHT, Maze, State
 
-from .widgets import (
+from widgets import (
     Alignment,
     Button,
     Label,
@@ -17,7 +17,7 @@ from .widgets import (
     MazeGenerator
 )
 
-from .constants import (
+from constants import (
     BEAM_WIDTH_LIST,
     BLUE,
     CELL_SIZE,
@@ -959,3 +959,7 @@ def show_results(results: list[tuple[str, dict[str, float]]]) -> None:
     popup.update_center(WINDOW.get_rect().center)
     popup.set_surface(WINDOW)
     state.results_popup = popup
+
+
+if __name__ == "__main__":
+    main()
