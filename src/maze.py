@@ -3,8 +3,7 @@ from typing import Optional
 import pygame
 
 
-from .generate import GenerationCallback, MazeGenerator
-from .widgets import AnimatingNode, Animation, AnimationCallback, Animator
+from .widgets import AnimatingNode, Animation, AnimationCallback, Animator, GenerationCallback, MazeGenerator
 from .pathfinder.models.node import Node
 from .pathfinder.models.solution import Solution
 from .pathfinder.main import PathFinder

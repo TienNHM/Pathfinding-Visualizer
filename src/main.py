@@ -1,9 +1,6 @@
 import sys
 import pygame
-
 from .state import State
-from .generate import MazeGenerator
-from .widgets import Animation, Animator, AnimatingNode
 from .maze import GOAL, START, Maze, WEIGHT
 
 from .widgets import (
@@ -14,7 +11,11 @@ from .widgets import (
     Orientation,
     Popup,
     Table,
-    TableCell
+    TableCell,
+    Animation, 
+    Animator, 
+    AnimatingNode, 
+    MazeGenerator
 )
 
 from .constants import (
