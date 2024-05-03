@@ -17,7 +17,7 @@ from widgets import (
     MazeGenerator
 )
 
-from constants import (
+from widgets import (
     BEAM_WIDTH_LIST,
     BLUE,
     CELL_SIZE,

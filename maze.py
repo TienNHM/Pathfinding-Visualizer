@@ -6,7 +6,7 @@ from pathfinder.models import Solution, Node, Search, Grid
 from widgets import Label, Popup, AnimatingNode, Animation, AnimationCallback, Animator, GenerationCallback, MazeGenerator
 from pathfinder.main import PathFinder
 
-from constants import (
+from widgets import (
     CELL_WEIGHTS,
     DARK_BLUE_2,
     GOAL,
