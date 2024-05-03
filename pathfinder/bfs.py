@@ -4,45 +4,27 @@ from .models import Grid, QueueFrontier, NoSolution, Solution
 class BreadthFirstSearch:
     @staticmethod
     def search(grid: Grid, _: int = 3) -> Solution:
-        """Find path between two points in a grid using Breadth First Search
-
-        Args:
-            grid (Grid): Grid of points
-            callback (Optional[Visualiser], optional): Callback for 
-            visualisation. Defaults to None.
-
-        Returns:
-            Solution: Solution found
-        """
-        # Create Node for the source cell
+        # Khởi tạo nút bắt đầu và thêm vào Frontier
         node = grid.get_node(pos=grid.start)
-
-        # Instantiate Frontier and add node into it
         frontier = QueueFrontier()
         frontier.add(node)
-
-        # Keep track of explored positions
+        # Tạo dict để lưu trữ các trạng thái đã được khám phá
         explored_states = {}
 
         while True:
-            # Return empty Solution object for no solution
+            # Trả về NoSolution nếu Frontier rỗng
             if frontier.is_empty():
                 return NoSolution([], list(explored_states))
 
-            # Remove node from the frontier
+            # Lấy nút đầu tiên từ Frontier
             node = frontier.remove()
-
-            # Add current node position into the explored set
+            # Thêm trạng thái hiện tại vào explored_states
             explored_states[node.state] = True
-
-            # If reached destination point
+            # Nếu nút hiện tại là nút đích, tạo đường đi và trả về một đối tượng Solution
             if node.state == grid.end:
-
-                # Generate path and return a Solution object
+                # Tạo danh sách các ô đã đi qua
                 cells = []
-
                 path_cost = 0
-
                 temp = node
                 while temp.parent != None:
                     cells.append(temp.state)
@@ -55,7 +37,7 @@ class BreadthFirstSearch:
                 return Solution(
                     cells, list(explored_states), path_cost=path_cost)
 
-            # Determine possible actions
+            # Xác định các nút láng giềng của nút hiện tại
             for action, state in grid.get_neighbours(node.state).items():
                 if state in explored_states or frontier.contains_state(state):
                     continue
@@ -63,5 +45,4 @@ class BreadthFirstSearch:
                 new = grid.get_node(pos=state)
                 new.parent = node
                 new.action = action
-
                 frontier.add(node=new)

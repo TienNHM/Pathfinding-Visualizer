@@ -5,31 +5,20 @@ from typing import List
 class LocalBeamSearch:
     @staticmethod
     def search(grid: Grid, beam_width: int = 3) -> Solution:
-        """Find path between two points in a grid using Local Beam Search
-
-        Args:
-            grid (Grid): Grid of points
-            beam_width (int): Number of states to maintain in the beam
-
-        Returns:
-            Solution: Solution found
-        """
-        print(f"Local Beam Search: Beam Width = {beam_width}")
-        
-        # Initialize the beam with a single node (source cell)
+        # Khởi tạo beam với một nút duy nhất (vị trí bắt đầu)
         initial_node = grid.get_node(pos=grid.start)
         beam = [initial_node]
 
-        # Keep track of explored positions
+        # Tạo dict để lưu trữ các trạng thái đã được khám phá
         explored_states = {}
 
         while True:
-            next_beam = []  # Next iteration's beam
+            next_beam = []  # Tạo beam mới
 
             for node in beam:
-                # If reached destination point
+                # Nếu nút hiện tại là nút đích, tạo đường đi và trả về một đối tượng Solution
                 if node.state == grid.end:
-                    # Generate path and return a Solution object
+                    # Tạo danh sách các ô đã đi qua
                     cells = []
                     path_cost = 0
                     temp = node
@@ -41,7 +30,7 @@ class LocalBeamSearch:
                     cells.reverse()
                     return Solution(cells, list(explored_states), path_cost=path_cost)
 
-                # Determine possible actions
+                # Xác định các nút láng giềng của nút hiện tại
                 for action, state in grid.get_neighbours(node.state).items():
                     if state in explored_states:
                         continue
@@ -50,22 +39,16 @@ class LocalBeamSearch:
                     new_node.action = action
                     next_beam.append(new_node)
 
-                # Add current node position into the explored set
+                # Thêm trạng thái hiện tại vào explored_states
                 explored_states[node.state] = True
             
 
-            # Sort next_beam by some heuristic (e.g., path cost, distance to goal)
+            # Sắp xếp các nút trong beam tăng dần theo cost (chi phí)
             next_beam.sort(key=lambda n: n.cost)
-
-            # Keep only the top beam_width nodes
+            # Giữ lại beam_width nút có chi phí thấp nhất
             beam = next_beam[:beam_width]
 
-            # Return empty Solution object if beam is empty
+            # Nếu không còn nút nào trong beam, trả về NoSolution
             if not beam:
-                print("No solution found")
                 return NoSolution([], list(explored_states))
 
-# Example usage:
-# local_beam_search = LocalBeamSearch()
-# solution = local_beam_search.search(grid=my_grid, beam_width=5)
-# print(solution)

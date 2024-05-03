@@ -1,35 +1,12 @@
 import random
 from typing import Optional
 import pygame
-
 from pathfinder.models import Solution, Node, Search, Grid
-from widgets import Label, Popup, AnimatingNode, Animation, AnimationCallback, Animator, GenerationCallback, MazeGenerator
 from pathfinder.PathFinder import PathFinder
-
 from widgets import (
-    CELL_WEIGHTS,
-    DARK_BLUE_2,
-    GOAL,
-    HEIGHT,
-    MIN_SIZE,
-    REMAINDER_H,
-    REMAINDER_W,
-    START,
-    WEIGHT,
-    CELL_SIZE,
-    FONT_14,
-    GRAY,
-    GREEN_2,
-    MAZE_HEIGHT,
-    HEADER_HEIGHT,
-    MAZE_WIDTH,
-    BLUE_2,
-    WIDTH,
-    BLUE,
-    DARK,
-    WHITE,
-    GREEN,
-    YELLOW
+    Label, Popup, AnimatingNode, Animation, AnimationCallback, Animator, GenerationCallback, MazeGenerator,
+    CELL_WEIGHTS, DARK_BLUE_2, GOAL, HEIGHT, MIN_SIZE, REMAINDER_H, REMAINDER_W, START, WEIGHT,
+    CELL_SIZE, FONT_14, GRAY, GREEN_2, MAZE_HEIGHT, HEADER_HEIGHT, MAZE_WIDTH, BLUE_2, WIDTH, BLUE, DARK, WHITE, GREEN, YELLOW
 )
 
 class State:

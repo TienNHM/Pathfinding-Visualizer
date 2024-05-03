@@ -3,42 +3,9 @@ import pygame
 from maze import GOAL, START, WEIGHT, Maze, State
 
 from widgets import (
-    Alignment,
-    Button,
-    Label,
-    Menu,
-    Orientation,
-    Popup,
-    Table,
-    TableCell,
-    Animation, 
-    Animator, 
-    AnimatingNode, 
-    MazeGenerator
-)
-
-from widgets import (
-    BEAM_WIDTH_LIST,
-    BLUE,
-    CELL_SIZE,
-    CELL_WEIGHTS_AND_PATH,
-    CLOCK,
-    DARK,
-    DARK_BLUE,
-    FONT_18,
-    GENERATE_MAZE_TYPE,
-    GRAY,
-    GREEN,
-    GREEN_2,
-    HEADER_HEIGHT,
-    BLUE_2,
-    MIN_SIZE,
-    SEARCH_ALGORITHMS,
-    WHITE,
-    WIDTH,
-    HEIGHT,
-    FPS,
-    YELLOW
+    Alignment, Button, Label, Menu, Orientation, Popup, Table, TableCell, Animation, Animator, AnimatingNode, MazeGenerator,
+    BEAM_WIDTH_LIST, BLUE, CELL_SIZE, CELL_WEIGHTS_AND_PATH, CLOCK, DARK, DARK_BLUE, FONT_18, GENERATE_MAZE_TYPE,
+    GRAY, GREEN, GREEN_2, HEADER_HEIGHT, BLUE_2, MIN_SIZE, SEARCH_ALGORITHMS, WHITE, WIDTH, HEIGHT, FPS, YELLOW
 )
 
 # Initialize PyGame
@@ -126,25 +93,7 @@ speed_menu = Menu(
             background_color=pygame.Color(*DARK_BLUE),
             foreground_color=pygame.Color(*WHITE),
             font_size=20, outline=False
-        ),
-        Button(
-            surface=WINDOW,
-            text="Medium",
-            x=0,
-            y=0,
-            background_color=pygame.Color(*DARK_BLUE),
-            foreground_color=pygame.Color(*WHITE),
-            font_size=20, outline=False
-        ),
-        Button(
-            surface=WINDOW,
-            text="Slow",
-            x=0,
-            y=0,
-            background_color=pygame.Color(*DARK_BLUE),
-            foreground_color=pygame.Color(*WHITE),
-            font_size=20, outline=False
-        ),
+        ) for speed in ("Fast", "Medium", "Slow")
     ]
 )
 
@@ -376,8 +325,7 @@ def main() -> None:
                             animator.add_nodes_to_animate([
                                 AnimatingNode(
                                     rect=rect,
-                                    center=(x + CELL_SIZE // 2,
-                                            y + CELL_SIZE // 2),
+                                    center=(x + CELL_SIZE // 2, y + CELL_SIZE // 2),
                                     ticks=pygame.time.get_ticks(),
                                     value=str(key % 50 + 2),
                                     animation=Animation.WEIGHT_ANIMATION,
@@ -390,8 +338,7 @@ def main() -> None:
                             animator.add_nodes_to_animate([
                                 AnimatingNode(
                                     rect=rect,
-                                    center=(x + CELL_SIZE // 2,
-                                            y + CELL_SIZE // 2),
+                                    center=(x + CELL_SIZE // 2, y + CELL_SIZE // 2),
                                     ticks=pygame.time.get_ticks(),
                                     value="#",
                                     color=DARK
@@ -440,12 +387,7 @@ def main() -> None:
 
 
 def instant_algorithm(maze: Maze, algo_name: str):
-    """Find path without animation
 
-    Args:
-        maze (Maze): Maze
-        algo_name (str): Algorithm name
-    """
     maze.clear_visited()
     beam_width = int(state.beam_width_label.text)
     print(f"Running {algo_name} with beam width {beam_width}")
@@ -470,12 +412,7 @@ def instant_algorithm(maze: Maze, algo_name: str):
 
 
 def get_pressed() -> tuple[bool, int | None]:
-    """Return pressed key if number
 
-    Returns:
-        tuple[bool, int | None]: Whether a num key was pressed,
-                                 the key if found
-    """
     keys = [pygame.K_2, pygame.K_3, pygame.K_4, pygame.K_5,
             pygame.K_6, pygame.K_7, pygame.K_8, pygame.K_9]
 
@@ -681,11 +618,7 @@ def draw() -> None:
 
 
 def run_single(idx: int) -> None:
-    """Run a single algorithm on one maze
 
-    Args:
-        idx (int): Algorithm index
-    """
     maze.clear_visited()
     algo_name = algo_menu.children[idx].text
     beam_width = int(state.beam_width_label.text)
@@ -717,12 +650,7 @@ def run_single(idx: int) -> None:
 
 
 def run_all(algo_idx: int, maze_idx: int = -1) -> None:
-    """Run all the algorithms on current or all mazes
 
-    Args:
-        algo_idx (int): Algorithm index
-        maze_idx (int, optional): Maze index. Defaults to -1.
-    """
     maze.clear_visited()
     text = algo_menu.children[algo_idx].text
 
@@ -806,11 +734,6 @@ def run_all(algo_idx: int, maze_idx: int = -1) -> None:
 
 
 def show_results(results: list[tuple[str, dict[str, float]]]) -> None:
-    """Display results
-
-    Args:
-        results (list[tuple[str, dict[str, float]]]): Result data
-    """
     children: list[list[TableCell]] = []
     children.append([
         TableCell(
