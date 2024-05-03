@@ -1,7 +1,6 @@
 import sys
 import pygame
-from .state import State
-from .maze import GOAL, START, Maze, WEIGHT
+from .maze import GOAL, START, WEIGHT, Maze, State
 
 from .widgets import (
     Alignment,
