@@ -4,7 +4,7 @@ import pygame
 
 
 from .generate import GenerationCallback, MazeGenerator
-from .animations import AnimatingNode, Animation, AnimationCallback, Animator
+from .widgets import AnimatingNode, Animation, AnimationCallback, Animator
 from .pathfinder.models.node import Node
 from .pathfinder.models.solution import Solution
 from .pathfinder.main import PathFinder

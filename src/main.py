@@ -3,7 +3,7 @@ import pygame
 
 from .state import State
 from .generate import MazeGenerator
-from .animations import Animation, Animator, AnimatingNode
+from .widgets import Animation, Animator, AnimatingNode
 from .maze import GOAL, START, Maze, WEIGHT
 
 from .widgets import (

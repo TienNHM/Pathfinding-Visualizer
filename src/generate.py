@@ -2,7 +2,7 @@ import random
 from typing import Any, Callable
 import pygame
 
-from .animations import AnimatingNode, Animation, Animator
+from .widgets import AnimatingNode, Animation, Animator
 from .constants import CELL_SIZE, CELL_WEIGHTS, DARK, GREEN_2, BLUE_2, MIN_SIZE, WHITE
 
 
