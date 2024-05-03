@@ -2,12 +2,9 @@ import random
 from typing import Optional
 import pygame
 
-from pathfinder.models.solution import Solution
+from pathfinder.models import Solution, Node, Search, Grid
 from widgets import Label, Popup, AnimatingNode, Animation, AnimationCallback, Animator, GenerationCallback, MazeGenerator
-from pathfinder.models.node import Node
-from pathfinder.models.solution import Solution, Search
 from pathfinder.main import PathFinder
-from pathfinder.models.grid import Grid
 
 from constants import (
     CELL_WEIGHTS,

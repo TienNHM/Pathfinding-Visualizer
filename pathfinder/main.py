@@ -1,10 +1,9 @@
 import time
 from typing import Callable
 
-from .search.bfs import BreadthFirstSearch
-from .search.localbeam import LocalBeamSearch
-from .models.grid import Grid
-from .models.solution import Solution, Search
+from .bfs import BreadthFirstSearch
+from .localbeam import LocalBeamSearch
+from .models import Grid, Solution, Search
 
 SearchFunction = Callable[[Grid, int], Solution]
 

@@ -1,6 +1,4 @@
-from ..models.grid import Grid
-from ..models.frontier import QueueFrontier
-from ..models.solution import NoSolution, Solution
+from .models import Grid, QueueFrontier, NoSolution, Solution
 from typing import List
 
 
