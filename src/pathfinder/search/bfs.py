@@ -5,7 +5,7 @@ from ..models.solution import NoSolution, Solution
 
 class BreadthFirstSearch:
     @staticmethod
-    def search(grid: Grid, beam_width: int = 3) -> Solution:
+    def search(grid: Grid, _: int = 3) -> Solution:
         """Find path between two points in a grid using Breadth First Search
 
         Args:

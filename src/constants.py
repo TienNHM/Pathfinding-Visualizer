@@ -75,7 +75,7 @@ MAX_SIZE = 1.2 * CELL_SIZE
 
 
 # Beam Width List Constants
-BEAM_WIDTH_LIST = [1, 3, 5, 10, 999999]
+BEAM_WIDTH_LIST = [1, 3, 5, 10, 50, 999999]
 
 # Generate Maze List Constants
 GENERATE_MAZE_TYPE = [
@@ -94,6 +94,7 @@ CELL_WEIGHTS_AND_PATH = ("1", "2", "3", "4", "5", "6", "7", "8", "V", "*")
 SEARCH_ALGORITHMS = [
     "Local Beam Search",
     "Breadth First Search",
+    "Hill Climbing Search",
     # "Greedy Best First Search",
     # "Depth First Search",
     # "Dijkstra's Algorithm",
