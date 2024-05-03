@@ -94,7 +94,7 @@ CELL_WEIGHTS_AND_PATH = ("1", "2", "3", "4", "5", "6", "7", "8", "V", "*")
 SEARCH_ALGORITHMS = [
     "Local Beam Search",
     "Breadth First Search",
-    "Hill Climbing Search",
+    # "Hill Climbing Search",
     # "Greedy Best First Search",
     # "Depth First Search",
     # "Dijkstra's Algorithm",
